@@ -1,2 +1,8 @@
 # Локальные служебные файлы и данные этой практики
 /dataset_sampled.csv
+
+# Temporary cache directory
+/.cache/
+
+# Temporary report directory - used for prepare data for .pdf or .docx reports
+/.report/
