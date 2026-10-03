@@ -1,53 +1,65 @@
-# AGENTS.md — правила работы в курсе ISAIM-2025
+# Agent Rules
 
-Правила действуют для всего курса независимо от расположения его каталога.
-Название курса: Information Security using Artificial Intelligence Methods
-(Защита информации методами искусственного интеллекта, 2025/2026, очная).
+## Repository Structure
 
-Пользователь: Бабушкин Михаил Вадимович. В именах итоговых работ использовать `БабушкинМВ`.
+This repository stores one course for one academic year. Read `COURSE.md` and the relevant `TASK.md` before changing course materials. Keep these instructions about repository operations; place course content in the exported cards.
 
-## Структура и навигация
+| File or directory | Purpose |
+|---|---|
+| `README.md` | Repository entry point and course title. |
+| `COURSE.md` | Course page export, including source metadata, descriptions, sections, and links to course elements. |
+| `AGENTS.md` | Instructions for agents maintaining the repository. |
+| `lecture/` | Collection of numbered lecture directories. |
+| `lecture/lecture-<number>-<english-title>/` | One or more original files for a lecture. |
+| `practice/` | Collection of numbered assignment directories. |
+| `practice/practice-<number>-<english-title>/` | An assignment card, its original attachments, and any existing solution artifacts. |
+| `TASK.md` | Assignment source information and the description exported from LMS. Required in every practice directory. |
+| `library/` | Optional directory for additional books or reference files supplied by the source. |
+| `LIBRARY.md` | Bibliography table of reference names and source links at the repository root. |
+| Source attachments | Original teaching materials downloaded from LMS; preserve their names and contents unless a change is requested. |
+| Solution artifacts | User-authored files associated with a practice; preserve them when refreshing an export. |
+| `.cache/` | Temporary caches inside the relevant practice directory. |
+| `.report/` | Temporary report files and images inside the relevant practice directory. |
+| `.gitignore` | Rules excluding local and generated files from Git. |
+| `.gitattributes` | File attributes, including the Git LFS tracking rules. |
 
-- Перед работой читать `COURSE.md`, этот файл и `TASK.md` конкретной практики.
-- Код каталога курса — `ISAIM-2025`; не менять его без запроса пользователя.
-- В корне хранить `COURSE.md`, `AGENTS.md`, `.gitignore` и `.gitattributes`.
-- Лекции хранить в `lecture/lecture-<номер>-<английское-название>`; в каждой лекции один или несколько файлов, без дополнительной служебной вложенности.
-- Практики хранить в `practice/practice-<номер>-<английское-название>`; внутри сохранять плоскую структуру файлов.
-- В названиях каталогов использовать английские буквы, цифры и дефисы; названия тем записывать строчными буквами через дефис. Сохранять исходную нумерацию.
-- В каждой практике обязателен `TASK.md` с разделом `Источник задания`, опциональным разделом `Методические указания` и разделом `Задание`, если формулировка есть. Если `TASK.md` отсутствует, уведомить пользователя и дождаться указаний.
-- Если литература не указана, не создавать `library` и `LIBRARY.md`.
-- Если литература указана только названиями или ссылками, хранить таблицу `Название | Источник` в корневом `LIBRARY.md`, без `library`.
-- Если вместе со списком или ссылками есть файлы книг, хранить `LIBRARY.md` и файлы внутри `library`.
+Naming and placement rules:
 
-## Материалы, задания и карточка курса
+- Name the course directory `<EnglishAcronym>-<YYYY>`, using only English letters, digits, and hyphens. Keep the approved course code unchanged.
+- Name lecture and practice directories `lecture-<number>-<english-title>` and `practice-<number>-<english-title>`. Use lowercase English words separated by hyphens; retain the source numbering.
+- Keep files directly inside their lecture or practice directory. Do not introduce service subdirectories for assignments, solutions, attachments, or links unless requested.
+- English directory names do not require translating or renaming the original files.
+- If no additional literature is listed, create neither `library` nor `LIBRARY.md`.
+- If references are supplied only as names or links, place `LIBRARY.md` at the repository root without creating `library`.
+- If a reference list or links are accompanied by book files, place `LIBRARY.md` at the repository root and the files inside `library`. Use a bibliography table with name and source columns.
 
-- Менять только то, что требуется запросом; не переформатировать остальные материалы.
-- Не удалять и не переименовывать исходные документы и `TASK.md` без отдельного запроса. Английские названия каталогов не требуют перевода имен файлов или их содержимого.
-- Сохранять формулировки заданий из LMS дословно; HTML приводить к читаемому Markdown без пересказа.
-- Если явной формулировки нет, указать выполнение практики по приложенному материалу с его точным именем.
-- В `COURSE.md` сохранять название, преподавателей, формат оценки, темы и таблицу статусов. Данные подтверждать карточкой LMS или локальной выгрузкой; неподтвержденные сведения явно отмечать.
-- Статусы менять только после проверки фактического кода, ноутбука или отчета; при обновлении статуса менять только соответствующую секцию карточки.
-- Перед выполнением практики согласовать формат результата, если пользователь его еще не указал. Для единственного итогового файла использовать формат `ISAIM-2025-Практика-<номер>-БабушкинМВ.<расширение>`, если не согласовано другое имя.
-- Опираться на `TASK.md`, команды пользователя и методические указания практики; лекции и дополнительную литературу привлекать по запросу пользователя.
-- При выгрузке из LMS лекционные ресурсы размещать в `lecture`, задания — в `practice`; не создавать отдельные файлы с техническими HTML-выгрузками и служебными ссылками без учебной ценности.
-- Новые правила курса записывать в этот файл; локальные `AGENTS.md` имеют приоритет для своих подкаталогов.
+## Export & Metadata
 
-## Git, временные файлы и Git LFS
+Start every `COURSE.md` and `TASK.md` with YAML frontmatter delimited by `---`. Use exactly four string fields:
 
-- Сохранять Git LFS: правила задает `.gitattributes`; в новом клоне при необходимости выполнить `git lfs install --local` и `git lfs pull`.
-- Корневой `.gitignore` самостоятельного репозитория получать одним ответом Toptal: шаблоны ОС и редакторов `macos,windows,linux,jetbrains,visualstudiocode` вместе с платформами курса `python,jupyternotebooks,microsoftoffice`.
-- Сохранять ссылки генератора и его ответ без ручных изменений; проверять побайтовое совпадение с ответом генератора.
-- Пользовательские исключения хранить в `.gitignore` конкретной практики или лекции, указывая относительные пути. Не скрывать все датасеты, отчеты или изображения по расширению.
-- Кэши хранить в `.cache` соответствующей практики, временные файлы отчета и изображения — в `.report`; при необходимости добавить точное локальное правило игнорирования.
-- Перед завершением проверять `git check-ignore`: служебные файлы игнорируются, задания, исходники, итоговые работы и необходимые файлы сборки доступны Git.
+| Field | Meaning |
+|---|---|
+| `ru` | Russian name of the course or assignment. |
+| `en` | English translation of that name. |
+| `code` | Approved course directory name for a course card, or the containing practice directory name for an assignment card. |
+| `origin` | Canonical LMS URL of the exported course page or assignment. |
 
-## Python и Jupyter
+- Preserve already confirmed metadata values. Translate names for `en` and directory naming; retain the source language in exported descriptions.
+- Copy educational text completely and in source order. Convert HTML to readable Markdown while preserving paragraphs, lists, emphasis, and working links.
+- Do not paraphrase, correct grammar, change formulas, or rewrite assessment criteria from the source.
+- Export course descriptions, section headings, and course element names with their links. Exclude navigation controls and completion indicators.
+- Every assignment card must include a source section. Include an assignment section only when the LMS card contains an assignment description; do not invent missing instructions.
+- Refresh only the requested exported cards. Preserve original attachments, solution artifacts, unrelated user edits, and directory names.
+- Exclude personal grades, submitted answers, feedback, comments, and completion status from the exported cards.
+- Keep authentication cookies, session identifiers, tokens, and hidden form fields out of repository files and logs.
+- If the source cannot be accessed or confirmed, preserve the existing export and report the limitation rather than inventing content.
 
-- Notebook должен быть связным мини-исследованием и исполняться сверху вниз без ошибок; сохранять устоявшийся стиль курса.
-- Рекомендуемая последовательность: заголовок, импорты и конфигурация, описание и загрузка данных, подготовка данных, эксперименты, вывод.
-- Каждую функцию размещать в отдельной ячейке и сопровождать pydoc; использовать понятные имена и короткие логически однозначные ячейки.
-- Использовать готовые библиотечные алгоритмы, если задание не требует собственной реализации; избегать избыточных универсальных оберток.
-- Явно описывать данные, размерность и признаки. Пояснять стандартизацию, шум и преобразования выборки; при сравнении методов использовать сопоставимую подготовку данных.
-- Проводить эксперименты в порядке задания. Перед экспериментом формулировать исследовательский вопрос, после него интерпретировать результаты и смысл метрик.
-- Включать только необходимые графики с информативными заголовками и подписями осей. Расхождения между графиками и метриками объяснять.
-- Итоговый вывод должен отвечать на вопрос задания, опираться на фактические результаты и указывать ограничения метода.
+## Git
+
+- Make the smallest requested change and preserve unrelated working-tree changes. Commit or publish only when requested.
+- Keep Git LFS enabled and preserve the tracking rules in `.gitattributes`. Initialize it with `git lfs install --local` when needed; verify that tracked documents have available LFS contents when moving or importing them.
+- Generate the root `.gitignore` with Toptal using the applicable operating system, editor, and course tool templates in a single response.
+- Preserve the generator links and its response byte-for-byte. Do not manually edit generated templates.
+- Put custom path exceptions in the `.gitignore` of the relevant practice or lecture, using explicit relative paths. Do not hide all datasets, reports, or images by extension.
+- Keep temporary caches and report assets ignored. Use `git check-ignore` to confirm that service files are excluded while cards, source materials, solutions, and required build files remain available to Git.
+- Before finishing, review the diff and confirm that only requested files changed.
